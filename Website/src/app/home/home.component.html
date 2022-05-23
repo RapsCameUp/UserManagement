@@ -1,0 +1,73 @@
+<nav class="nav bg-purple justify-content-center">
+    <a class="nav-link text-dark" href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+    <a class="nav-link text-dark" href="#">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+</nav>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-12 p-2">
+            <h6> <i class="fa fa-tachometer" aria-hidden="true"></i> User Management</h6>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 p-2">
+            <a class="text-decoration-none" href="#">
+                <div class="card p-3 shadow text-center border-0">
+                    <div class="card-body">
+                        <p class="card-title lead">{{user_counter}} Users</p>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="main-card mb-3 card">
+
+                                    <div class="table-responsive">
+                                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>First Name</th>
+                                                    <th class="text-center">Last Name</th>
+                                                    <th class="text-center">Email</th>
+                                                    <th class="text-center">Phone Numbers</th>
+                                                    <th>Date Added</th>
+                                                    <th class="text-center">Status</th>
+                                                    <th class="text-center">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ng-container *ngFor="let user of users">
+                                                    <tr>
+                                                        <td class="text-center text-muted">{{user.firstName}}</td>
+                                                        <td class="text-center text-muted">{{user.lastName}}</td>
+                                                        <td class="text-center text-muted">{{user.email}}</td>
+                                                        <td class="text-center text-muted">{{user.phoneNumbers}}</td>
+                                                        <td class="text-center text-muted">{{user.dateAdded}}</td>
+                                                        <td>
+                                                            <span *ngIf="user.status == '1'" class="badge bg-success">Active</span>
+                                                            <span *ngIf="user.status == '0'" class="badge bg-danger">Disabled</span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <a (click)="RemoveUser(user.id)" class="btn btn-danger btn-sm">Remove</a>
+                                                            <a [routerLink]="['/userdetails', user.id]" type="button" class="btn btn-primary btn-sm">Details</a>
+                                                        </td>
+                                                    </tr>
+                                                </ng-container>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer class="footer fixed-bottom">
+    <div class="row text-center p-3">
+        <p class="small text-muted">Developed & Designed by @rabelani7@gmail.com</p>
+    </div>
+</footer>
